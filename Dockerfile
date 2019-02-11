@@ -2,6 +2,7 @@ FROM java:8
 RUN apt-get update
 RUN apt-get install -y maven
 # RUN mvn install:install-file -Dfile=ojdbc14.jar -DgroupId=com.oracle -DartifactId=ojdbc14 -Dversion=10.2.0.4.0 -Dpackaging=jar
+RUN mvn install:install-file -DgroupId=com.oracle -DartifactId=ojdbc14 -Dversion=10.2.0.3.0 -Dpackaging=jar -Dfile=ojdbc14.jar -DgeneratePom=true
 WORKDIR ./
 ADD pom.xml ./pom.xml
 ADD src /src
