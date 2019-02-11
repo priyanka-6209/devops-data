@@ -1,4 +1,4 @@
-ckage com.mkyong;
+package com.mkyong;
 
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecution;
