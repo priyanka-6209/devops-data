@@ -1,0 +1,108 @@
+ns xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch-2.2.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:task="http://www.springframework.org/schema/task" xmlns:batch="http://www.springframework.org/schema/batch">
+
+<bean class="com.mkyong.model.Report" id="report" scope="prototype"/>
+
+
+-<batch:job id="reportJob">
+
+
+-<batch:step id="step1">
+
+
+-<batch:tasklet>
+
+<batch:chunk commit-interval="2" writer="mysqlItemWriter" reader="cvsFileItemReader"> </batch:chunk>
+
+</batch:tasklet>
+
+</batch:step>
+
+</batch:job>
+
+
+-<bean class="org.springframework.batch.item.file.FlatFileItemReader" id="cvsFileItemReader">
+
+<!-- Read a csv file -->
+
+
+<property name="resource" value="classpath:cvs/report.csv"/>
+
+
+-<property name="lineMapper">
+
+
+-<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+
+<!-- split it -->
+
+
+
+-<property name="lineTokenizer">
+
+
+-<bean class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+
+<property name="names" value="date,impressions,clicks,earning"/>
+
+</bean>
+
+</property>
+
+
+-<property name="fieldSetMapper">
+
+<!-- return back to reader, rather than a mapped object. -->
+
+
+<!-- <bean class="org.springframework.batch.item.file.mapping.PassThroughFieldSetMapper" /> -->
+
+
+<!-- map to an object -->
+
+
+
+-<bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+
+<property name="prototypeBeanName" value="report"/>
+
+</bean>
+
+</property>
+
+</bean>
+
+</property>
+
+</bean>
+
+
+-<bean class="org.springframework.batch.item.database.JdbcBatchItemWriter" id="mysqlItemWriter">
+
+<property ref="dataSource" name="dataSource"/>
+
+
+-<property name="sql">
+
+
+-<value>
+
+-<![CDATA[        
+            	insert into RAW_REPORT(DATE,IMPRESSIONS,CLICKS,EARNING) values (:date, :impressions, :clicks, :earning)
+            ]]>
+</value>
+
+</property>
+
+<!-- It will take care matching between object property and sql name parameter -->
+
+
+
+-<property name="itemSqlParameterSourceProvider">
+
+<bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+
+</property>
+
+</bean>
+
+</beans>

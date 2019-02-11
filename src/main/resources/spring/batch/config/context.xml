@@ -1,0 +1,30 @@
+ns xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans">
+
+<!-- stored job-meta in database -->
+
+
+
+-<bean class="org.springframework.batch.core.repository.support.JobRepositoryFactoryBean" id="jobRepository">
+
+<property ref="dataSource" name="dataSource"/>
+
+<property ref="transactionManager" name="transactionManager"/>
+
+<property name="databaseType" value="mysql"/>
+
+</bean>
+
+<!-- stored job-meta in memory -->
+
+
+<!-- <bean id="jobRepository" class="org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean"> <property name="transactionManager" ref="transactionManager" /> </bean> -->
+
+
+
+-<bean class="org.springframework.batch.core.launch.support.SimpleJobLauncher" id="jobLauncher">
+
+<property ref="jobRepository" name="jobRepository"/>
+
+</bean>
+
+</beans>
