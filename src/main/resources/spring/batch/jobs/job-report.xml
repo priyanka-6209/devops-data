@@ -1,15 +1,16 @@
-ns xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch-2.2.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:task="http://www.springframework.org/schema/task" xmlns:batch="http://www.springframework.org/schema/batch">
+<?xml version="1.0"?>
+<beans xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch-2.2.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:task="http://www.springframework.org/schema/task" xmlns:batch="http://www.springframework.org/schema/batch">
 
 <bean class="com.mkyong.model.Report" id="report" scope="prototype"/>
 
 
--<batch:job id="reportJob">
+<batch:job id="reportJob">
 
 
--<batch:step id="step1">
+<batch:step id="step1">
 
 
--<batch:tasklet>
+<batch:tasklet>
 
 <batch:chunk commit-interval="2" writer="mysqlItemWriter" reader="cvsFileItemReader"> </batch:chunk>
 
@@ -20,7 +21,7 @@ ns xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.sp
 </batch:job>
 
 
--<bean class="org.springframework.batch.item.file.FlatFileItemReader" id="cvsFileItemReader">
+<bean class="org.springframework.batch.item.file.FlatFileItemReader" id="cvsFileItemReader">
 
 <!-- Read a csv file -->
 
@@ -28,19 +29,19 @@ ns xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.sp
 <property name="resource" value="classpath:cvs/report.csv"/>
 
 
--<property name="lineMapper">
+<property name="lineMapper">
 
 
--<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 
 <!-- split it -->
 
 
 
--<property name="lineTokenizer">
+<property name="lineTokenizer">
 
 
--<bean class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+<bean class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
 
 <property name="names" value="date,impressions,clicks,earning"/>
 
@@ -49,7 +50,7 @@ ns xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.sp
 </property>
 
 
--<property name="fieldSetMapper">
+<property name="fieldSetMapper">
 
 <!-- return back to reader, rather than a mapped object. -->
 
@@ -61,7 +62,7 @@ ns xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.sp
 
 
 
--<bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+<bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
 
 <property name="prototypeBeanName" value="report"/>
 
@@ -76,17 +77,17 @@ ns xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.sp
 </bean>
 
 
--<bean class="org.springframework.batch.item.database.JdbcBatchItemWriter" id="mysqlItemWriter">
+<bean class="org.springframework.batch.item.database.JdbcBatchItemWriter" id="mysqlItemWriter">
 
 <property ref="dataSource" name="dataSource"/>
 
 
--<property name="sql">
+<property name="sql">
 
 
--<value>
+<value>
 
--<![CDATA[        
+<![CDATA[        
             	insert into RAW_REPORT(DATE,IMPRESSIONS,CLICKS,EARNING) values (:date, :impressions, :clicks, :earning)
             ]]>
 </value>
@@ -97,7 +98,7 @@ ns xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.sp
 
 
 
--<property name="itemSqlParameterSourceProvider">
+<property name="itemSqlParameterSourceProvider">
 
 <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
 
