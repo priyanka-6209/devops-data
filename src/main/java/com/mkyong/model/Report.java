@@ -1,4 +1,4 @@
-ckage com.mkyong.model;
+package com.mkyong.model;
 
 public class Report {
 
