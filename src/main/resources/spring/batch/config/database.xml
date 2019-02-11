@@ -1,18 +1,19 @@
-ns xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns="http://www.springframework.org/schema/beans">
+<?xml version="1.0"?>
+<beans xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns="http://www.springframework.org/schema/beans">
 
 <!-- connect to database -->
 
 
 
--<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
+<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
 
-<property value="com.mysql.jdbc.Driver" name="driverClassName"/>
+<property value="oracle.jdbc.OracleDriver" name="driverClassName"/>
 
-<property value="jdbc:mysql://localhost:3306/test" name="url"/>
+<property value="jdbc:oracle:thin:@oracle:1521:xe" name="url"/>
 
-<property value="root" name="username"/>
+<property value="pirates" name="username"/>
 
-<property value="" name="password"/>
+<property value="pirates" name="password"/>
 
 </bean>
 
@@ -22,7 +23,7 @@ ns xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sp
 
 
 
--<jdbc:initialize-database data-source="dataSource">
+<jdbc:initialize-database data-source="dataSource">
 
 <jdbc:script location="org/springframework/batch/core/schema-drop-mysql.sql"/>
 
