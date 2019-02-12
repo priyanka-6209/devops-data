@@ -9,7 +9,7 @@ ADD pom.xml ./pom.xml
 ADD src ./src
 RUN ["mvn", "package"]
 EXPOSE 8080
-#ADD /target/SpringBatchExample-1.0-SNAPSHOT.jar SpringBatchExample-1.0-SNAPSHOT.jar
-#ENTRYPOINT ["java", "-jar", "SpringBatchExample-1.0-SNAPSHOT.jar"]
+ADD "/target/SpringBatchExample-1.0-SNAPSHOT.jar" SpringBatchExample-1.0-SNAPSHOT.jar
+ENTRYPOINT ["java", "-jar", "SpringBatchExample-1.0-SNAPSHOT.jar"]
 #CMD ["java","-jar","SpringBatchExample-1.0-SNAPSHOT.jar"]
-CMD ["/usr/lib/jvm/java-8-openjdk-amd64/bin/java", "-jar", "SpringBatchExample-1.0-SNAPSHOT.jar"]
+#CMD ["/usr/lib/jvm/java-8-openjdk-amd64/bin/java", "-jar", "SpringBatchExample-1.0-SNAPSHOT.jar"]
