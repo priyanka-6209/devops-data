@@ -12,7 +12,7 @@
 
 <batch:tasklet>
 
-<batch:chunk commit-interval="2" writer="mysqlItemWriter" reader="cvsFileItemReader"> </batch:chunk>
+<batch:chunk commit-interval="10" writer="dbItemWriter" reader="cvsFileItemReader"> </batch:chunk>
 
 </batch:tasklet>
 
@@ -43,7 +43,7 @@
 
 <bean class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
 
-<property name="names" value="date,impressions,clicks,earning"/>
+<property name="names" value="date,operation,application,linenumber"/>
 
 </bean>
 
@@ -77,7 +77,7 @@
 </bean>
 
 
-<bean class="org.springframework.batch.item.database.JdbcBatchItemWriter" id="mysqlItemWriter">
+<bean class="org.springframework.batch.item.database.JdbcBatchItemWriter" id="dbItemWriter">
 
 <property ref="dataSource" name="dataSource"/>
 
@@ -88,7 +88,7 @@
 <value>
 
 <![CDATA[        
-            	insert into RAW_REPORT(DATE,IMPRESSIONS,CLICKS,EARNING) values (:date, :impressions, :clicks, :earning)
+            	insert into RAW_REPORT(DATE,OPERATION,APPLICATION,LINENUMBER) values (:date, :operation, :application, :linenumber)
             ]]>
 </value>
 
