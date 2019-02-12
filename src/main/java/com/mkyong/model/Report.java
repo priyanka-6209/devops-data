@@ -5,7 +5,7 @@ public class Report {
 	private String date;
 	private String operation;
 	private String application;
-	private int lineNumber;
+	private int linenumber;
 	
 	public String getDate() {
 		return date;
@@ -25,11 +25,11 @@ public class Report {
 	public void setApplication(String application) {
 		this.application = application;
 	}
-	public int getLineNumber() {
-		return lineNumber;
+	public int getLinenumber() {
+		return linenumber;
 	}
-	public void setLineNumber(int lineNumber) {
-		this.lineNumber = lineNumber;
+	public void setLinenumber(int linenumber) {
+		this.linenumber = linenumber;
 	}
 
 	
