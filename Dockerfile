@@ -12,4 +12,4 @@ EXPOSE 8080
 #ADD /target/SpringBatchExample-1.0-SNAPSHOT.jar SpringBatchExample-1.0-SNAPSHOT.jar
 #ENTRYPOINT ["java", "-jar", "SpringBatchExample-1.0-SNAPSHOT.jar"]
 #CMD ["java","-jar","SpringBatchExample-1.0-SNAPSHOT.jar"]
-CMD ["/usr/lib/jvm/java-8-openjdk-amd64/bin/java", "-jar", "target/SpringBatchExample-1.0-SNAPSHOT.jar"]
+CMD ["/usr/lib/jvm/java-8-openjdk-amd64/bin/java", "-jar", "SpringBatchExample-1.0-SNAPSHOT.jar"]
