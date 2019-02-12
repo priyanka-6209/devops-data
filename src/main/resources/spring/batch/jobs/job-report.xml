@@ -88,7 +88,7 @@
 <value>
 
 <![CDATA[        
-            	insert into RAW_REPORT(DATE,OPERATION,APPLICATION,LINENUMBER) values (:date, :operation, :application, :linenumber)
+            	insert into RAW_REPORT(REPORT_DATE,OPERATION,APPLICATION,LINENUMBER) values (:date, :operation, :application, :linenumber)
             ]]>
 </value>
 
