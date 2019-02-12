@@ -1,6 +1,17 @@
 pipeline {
-    agent any
-    stages {
+   agent any
+     tools{
+        maven 'maven'
+     }
+    stages{
+    	stage('Build'){
+    		steps {
+                echo 'Running build automation'
+                //sh 'mvn -B -DskipTests clean package'
+                sh 'mvn clean package'
+                archiveArtifacts artifacts: 'target/SpringBatchExample-1.0-SNAPSHOT.jar'
+    		}
+    	}
         stage('Build Docker Image'){
 	        steps {
 	            script{
