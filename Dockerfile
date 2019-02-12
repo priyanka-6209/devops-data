@@ -7,4 +7,4 @@ EXPOSE 8080
 ARG JAR_FILE=target/SpringBatchExample-1.0-SNAPSHOT.jar
 # Add the application's jar to the container
 ADD ${JAR_FILE} SpringBatchExample-1.0-SNAPSHOT.jar
-#ENTRYPOINT ["java", "-jar", "SpringBatchExample-1.0-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "SpringBatchExample-1.0-SNAPSHOT.jar"]
