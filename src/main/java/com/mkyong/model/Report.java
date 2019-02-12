@@ -2,34 +2,34 @@ package com.mkyong.model;
 
 public class Report {
 
-	private String Date;
-	private String Impressions;
-	private String Clicks;
-	private String Earning;
+	private String date;
+	private String operation;
+	private String application;
+	private int lineNumber;
 	
 	public String getDate() {
-		return Date;
+		return date;
 	}
 	public void setDate(String date) {
-		Date = date;
+		this.date = date;
 	}
-	public String getImpressions() {
-		return Impressions;
+	public String getOperation() {
+		return operation;
 	}
-	public void setImpressions(String impressions) {
-		Impressions = impressions;
+	public void setOperation(String operation) {
+		this.operation = operation;
 	}
-	public String getClicks() {
-		return Clicks;
+	public String getApplication() {
+		return application;
 	}
-	public void setClicks(String clicks) {
-		Clicks = clicks;
+	public void setApplication(String application) {
+		this.application = application;
 	}
-	public String getEarning() {
-		return Earning;
+	public int getLineNumber() {
+		return lineNumber;
 	}
-	public void setEarning(String earning) {
-		Earning = earning;
+	public void setLineNumber(int lineNumber) {
+		this.lineNumber = lineNumber;
 	}
 
 	
