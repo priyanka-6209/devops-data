@@ -19,7 +19,7 @@
 
 <properties>
 
-<jdk.version>1.6</jdk.version>
+<jdk.version>1.8</jdk.version>
 
 <spring.version>3.2.2.RELEASE</spring.version>
 
